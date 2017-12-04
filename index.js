@@ -1,7 +1,16 @@
 // Require the framework and instantiate it
 const fastify = require('fastify')()
-//const jwt = require('jsonwebtoken');
-//const bcrypt = require('bcryptjs');
+
+fastify
+  .register(require('fastify-cookie'))
+  .register(require('fastify-caching'))
+  .register(require('fastify-server-session'), {
+    secretKey: 'some-secret-password-at-least-32-characters-long',
+    sessionMaxAge: 900000, // 15 minutes in milliseconds
+    cookie: {
+      path: '/'
+    }
+  })
 
 fastify.addContentTypeParser('*', function (req, done) {
 	var data = ''
