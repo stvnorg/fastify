@@ -4,9 +4,11 @@
   "version": "0.0.1",
   "description": "learn fastify.io",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "ejs": "^2.5.7",
     "fastify": "^0.35.2",
     "fastify-formbody": "^1.0.1",
+    "jsonwebtoken": "^8.1.0",
     "point-of-view": "^0.3.0",
     "serve-static": "^1.13.1"
   }

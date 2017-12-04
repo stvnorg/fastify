@@ -1,5 +1,7 @@
 // Require the framework and instantiate it
 const fastify = require('fastify')()
+//const jwt = require('jsonwebtoken');
+//const bcrypt = require('bcryptjs');
 
 fastify.addContentTypeParser('*', function (req, done) {
 	var data = ''
