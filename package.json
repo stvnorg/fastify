@@ -1,8 +1,8 @@
 {
-  "name": "logs_file_viewer",
+  "name": "simple fastify.io apps",
   "author": "steven.stevanus@indosystem.com",
   "version": "0.0.1",
-  "description": "Payment API/ERROR logs file viewer",
+  "description": "learn fastify.io",
   "dependencies": {
     "ejs": "^2.5.7",
     "fastify": "^0.35.2",
