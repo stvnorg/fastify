@@ -1,0 +1,13 @@
+{
+  "name": "logs_file_viewer",
+  "author": "steven.stevanus@indosystem.com",
+  "version": "0.0.1",
+  "description": "Payment API/ERROR logs file viewer",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "fastify": "^0.35.2",
+    "fastify-formbody": "^1.0.1",
+    "point-of-view": "^0.3.0",
+    "serve-static": "^1.13.1"
+  }
+}
