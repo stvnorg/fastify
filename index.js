@@ -29,7 +29,7 @@ fastify
 /*
 	.register(require('fastify-redis'), {
   	driver: require('ioredis'),
-  	host: '103.43.45.100'
+  	host: 'localhost'
 	}, err => {
   	if (err) throw err
 	})
