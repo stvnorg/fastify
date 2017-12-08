@@ -1,17 +1,39 @@
 // Require the framework and instantiate it
 const fastify = require('fastify')()
 
+const redis = require('ioredis')({host:'localhost'});
+
+const abcache = require('abstract-cache')({
+  useAwait: false,
+  driver: {
+    name: 'abstract-cache-redis', // must be installed via `npm install`
+    options: {client: redis}
+  }
+})
+
+//var fRedis = require('fastify-redis')({driver: require('ioredis'), host: 'localhost'}, err => { if (err) throw err })
+
 fastify
   .register(require('fastify-cookie'))
-  .register(require('fastify-caching'))
+	.register(require('fastify-caching'), {cache: abcache})
   .register(require('fastify-server-session'), {
     secretKey: 'some-secret-password-at-least-32-characters-long',
-    sessionMaxAge: 900000, // 15 minutes in milliseconds
-    cookie: {
-      path: '/'
-    }
-  })
-
+    sessionMaxAge: 60000,
+		cookie: {
+			//maxAge: 900000,
+			path: '/'
+    },
+		//store: new redisStore({ host: 'localhost', port: 6379, client: client,ttl :  260})
+  	//store: redis
+	})
+/*
+	.register(require('fastify-redis'), {
+  	driver: require('ioredis'),
+  	host: '103.43.45.100'
+	}, err => {
+  	if (err) throw err
+	})
+*/
 fastify.addContentTypeParser('*', function (req, done) {
 	var data = ''
 	req.on('data', chunk => { data += chunk })
@@ -31,6 +53,8 @@ fastify.register(require('fastify-formbody'), {}, (err) => {
 })
 
 fastify.register(require('./routes/static.js'))
+
+fastify.register(require('./routes/scripts.js'))
 
 fastify.register(require('./routes/home.js'))
 
