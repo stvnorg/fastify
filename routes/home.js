@@ -7,12 +7,12 @@ function getCV(db) {
 			
 		function onCollection(err, col) {
 			if (err) return reply.send(err);
-			col.findOne({ id: 1 }, (err, data) => {
+			col.find({}).toArray( (err, data) => {
 				cv = data;
 				resolve(cv);
 			})
 		}
-	});
+	})
 }
 
 async function routes (fastify, options) {

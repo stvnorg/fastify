@@ -80,7 +80,9 @@ aria-hidden="true"></i></a>
 				<div class="tab-pane fade in" id="tech-stack" role="tabpanel">Linux, Python, Flask, HTML, CSS, Javascript, MySQL, MongoDB, Nginx, Ansible, Selenium, Elasticsearch-Kibana, Prometheus-Grafana, Docker, Vagrant, CircleCI, Git, TCP/IP, IPTables, Mikrotik, and more to come ...</div>
 				<div class="tab-pane fade in" id="cv" role="tabpanel">
 					<% if (cv) { %>
-						<%= cv.work %>
+						<% cv.forEach(function(c) { %>
+							<%= c.role %><br>
+						<% }) %>
 					<% } %>
 				</div>
 				<div class="tab-pane fade in" id="gallery" role="tabpanel">Gallery</div>
