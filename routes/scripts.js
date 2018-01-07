@@ -4,7 +4,7 @@ async function routes (fastify, options) {
   // Get the request url and extract the filename
   var url = request['req']['url'].split('/')
   const fs = require('fs')
-  const stream = fs.createReadStream('../fastify/scripts/' + url[2])
+  const stream = fs.createReadStream('../fastify/scripts/' + url.slice(2,url.length).join('/'))
   reply.type('application/javascript').send(stream)
   })
 }

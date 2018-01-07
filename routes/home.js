@@ -1,15 +1,31 @@
 // Index route
-async function routes (fastify, options) {
-	fastify.get('/', function (request, reply) {
-		if (request.session && request.session.email) {
-			reply.type('text/html');
-			reply.send('Hi ' + request.session.email);
-		} else {
-			//reply.view('../fastify/templates/login.ejs', { email: null } )
-			return reply.redirect('/login');
-			//reply.send("Hello World!");
+
+function getCV(db) {
+	return new Promise(function(resolve, reject) {
+		db.collection('cv', onCollection);
+		var cv = null;
+			
+		function onCollection(err, col) {
+			if (err) return reply.send(err);
+			col.findOne({ id: 1 }, (err, data) => {
+				cv = data;
+				resolve(cv);
+			})
 		}
+	});
+}
+
+async function routes (fastify, options) {
+	fastify.get('/', async function (request, reply) {
+		
+		// create mongodb connection
+		const { db } = fastify.mongo;
+		
+		var cv = await getCV(db);
+		console.log(cv);
+		reply.view('../fastify/templates/home.ejs', { cv: cv });
 	})
 }
 
 module.exports = routes
+module.exports.getCV = getCV

@@ -1,6 +1,7 @@
 // Require the framework and instantiate it
 const fastify = require('fastify')()
 
+/*
 const redis = require('ioredis')({host:'localhost'});
 
 const abcache = require('abstract-cache')({
@@ -10,15 +11,17 @@ const abcache = require('abstract-cache')({
     options: {client: redis}
   }
 })
+*/
 
 //var fRedis = require('fastify-redis')({driver: require('ioredis'), host: 'localhost'}, err => { if (err) throw err })
 
 fastify
   .register(require('fastify-cookie'))
-	.register(require('fastify-caching'), {cache: abcache})
+  //.register(require('fastify-caching'), {cache: abcache})
+	.register(require('fastify-caching'))
   .register(require('fastify-server-session'), {
     secretKey: 'some-secret-password-at-least-32-characters-long',
-    sessionMaxAge: 60000,
+    sessionMaxAge: 600000,
 		cookie: {
 			//maxAge: 900000,
 			path: '/'
@@ -52,13 +55,23 @@ fastify.register(require('fastify-formbody'), {}, (err) => {
 	if (err) throw err
 })
 
+fastify.register(require('./routes/images.js'))
+
 fastify.register(require('./routes/static.js'))
 
 fastify.register(require('./routes/scripts.js'))
 
+fastify.register(require('fastify-mongodb'), {
+	url: 'mongodb://localhost:27017/marchnine'
+})
+
 fastify.register(require('./routes/home.js'))
 
 fastify.register(require('./routes/login.js'))
+
+fastify.register(require('./routes/admin.js'))
+
+fastify.register(require('./routes/add-cv.js'))
 
 fastify.register(require('./routes/view-logs.js'))
 

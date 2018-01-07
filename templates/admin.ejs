@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin Page</title>
+
+    <!-- Bootstrap CSS -->
+    <!--<link rel="stylesheet" href="../bootstrap/bootstrap-4.0.0-beta-dist/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="/static/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css">
+		<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Enriqueta" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+		<script src="/static/bootstrap-4.0.0-alpha.6-dist/js/bootstrap.js"></script>
+		<script src="https://use.fontawesome.com/8b057a7cd3.js"></script>
+		<link href="/static/signin.css" rel="stylesheet">
+		<script type="application/javascript" src="/scripts/ejs_production.js"></script>
+		<script type="text/javascript">
+				window.onload = function() {
+    			if(!window.location.hash) {
+        		window.location = window.location + '#loaded';
+        		window.location.reload();
+    			}
+				}
+		</script>
+		<style>
+			body {
+				background-color: #cad3e6;
+				background-image: url("/images/asfalt-light.png");
+				repeat;
+				!important;
+			}
+			input[type='text'] {
+				padding: 10px 10px;
+				!important;
+			}
+			label {
+				font-size: 0.8rem;
+				!important;
+			}
+		</style>
+  </head>
+
+  <body>
+		<div class="container push-sm-2">
+			<h3>Work History List:</h3>
+  		<form>
+				<div class="form-group row">
+      		<div class="col-md-1 col-sm-2">
+        		<br><a href="add-cv" class="btn btn-primary" role="button" style="font-size: 0.8rem !important">Add New</a>
+      		</div>
+    		</div>
+				<% if (cv) { %>
+					<%- cv.work %> &nbsp;&nbsp;
+				<a href="#" target="_blank"><i class="fa fa-pencil" title="edit" aria-hidden="true"></i></a>
+				<a href="#" target="_blank"><i class="fa fa-trash-o" title="delete" aria-hidden="true"></i></a>
+				<% } %>
+  		</form>
+		</div>
+  </body>
+</html>
+
