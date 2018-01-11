@@ -21,6 +21,20 @@
 				repeat;
 				!important;
 			}
+			.tab-content {
+				font-family: 'Titillium Web', 'Quattrocento', sans-serif;
+				font-size: 0.9rem; 
+				!important;
+			}
+			#jobtask {
+				font-size: 0.85rem;
+				padding-left: 10px;
+				!important;
+			}
+			#workperiode {
+				font-size: 0.8rem;
+				!important;
+			}
 		</style>
   </head>
 <body>
@@ -71,7 +85,7 @@ aria-hidden="true"></i></a>
 
 	<div style="margin-top: -10px; !important" class="container">
 		<div style="background: #fff; padding: 20px 20px; border-radius: 3px; !important" class="col-md-8 push-md-2 col-xs-12">
-			<div style="font-family: 'Titillium Web', 'Quattrocento', sans-serif; font-size: 0.9rem; !important" class="tab-content">
+			<div class="tab-content">
 				<div class="active tab-pane show fade" id="about" role="tabpanel">
 					<p>Jesus Freak, geek, avid swimmer, art lover (I draw sometimes), book nerd, soccer fan, travel junky (wish i had more time and money to visit other countries).</p>
 					<p>I'm a self taught Programmer, DevOps Engineer and Network Administrator. My first linux OS is Mandrake, back then in the year 2002 when I was still in College. Since then I was very astonished of what Information Technology can brings to humanity and the world. Always want to learn and explore new things, new skills and new journey.</p>
@@ -81,7 +95,10 @@ aria-hidden="true"></i></a>
 				<div class="tab-pane fade in" id="cv" role="tabpanel">
 					<% if (cv) { %>
 						<% cv.forEach(function(c) { %>
-							<%= c.role %><br>
+							<strong><u><%- c.role %></u></strong><br>
+							<%- c.company %>&nbsp;(<%- c.location %>)<br>
+							<span id="workperiode"><%- c.startdate %> - <%- c.enddate %></span>
+							<p id="jobtask"><%- c.jobtask %></p>
 						<% }) %>
 					<% } %>
 				</div>

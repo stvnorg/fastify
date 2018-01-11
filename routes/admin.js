@@ -1,4 +1,4 @@
-const CV = require('./home.js'); // import the getCV() function from home.js routes file
+const CV = require('../functions/cv.js'); // import the getCV() function from home.js routes file
 
 // Index route
 async function routes (fastify, options) {

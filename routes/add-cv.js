@@ -1,24 +1,4 @@
-const CV = require('./home.js'); // import the getCV() function from home.js routes file
-var validator = require('validator');
-
-function addCV(db, data) {
-	return new Promise(function(resolve, reject) {
-		db.collection('cv', onCollection);
-		var cv = null;
-			
-		function onCollection(err, col) {
-			if (err) return reply.send(err);
-			col.insertOne({ 
-				id: data[0], 
-				role: data[1], 
-				company: data[2], 
-				location: data[3],
-				startdate: data[4], 
-				enddate: data[5], 
-				jobtask: data[6] }, (err, result) => { resolve(result); })
-		}
-	});
-}
+const CV = require('../functions/cv.js'); // import the getCV() function from home.js routes file
 
 // Index route
 async function routes (fastify, options) {
@@ -26,7 +6,7 @@ async function routes (fastify, options) {
 		
 		if (request.session && request.session.email) {
 			reply.type('text/html');
-			reply.view('../fastify/templates/add-cv.ejs', {} )
+			reply.view('../fastify/templates/add-cv.ejs', { success: false } )
 		} else {
 			return reply.redirect('/login');
 		}
@@ -39,7 +19,7 @@ async function routes (fastify, options) {
 			var location = request.body.location.toString();
 			var startDate = request.body.startDate.toString();
 			var endDate = request.body.endDate.toString();
-			var jobTask = request.body.jobTask.toString();
+			var jobTask = request.body.jobTask.toString().replace(/\r\n/g, '<br>');
 			
 			if (role && company && startDate && endDate && jobTask) { 
 				console.log(role, company, location, startDate, endDate, jobTask, request.body);
@@ -49,15 +29,15 @@ async function routes (fastify, options) {
 				console.log(cv);							//
 			
 				if (!cv.length) {
-					addCV(db, [1, role, company, location, startDate, endDate, jobTask]);
+					CV.addCV(db, [1, role, company, location, startDate, endDate, jobTask]);
 				} else {
-					addCV(db, [parseInt(cv[cv.length-1].id)+1, role, company, location, startDate, endDate, jobTask]);
+					CV.addCV(db, [parseInt(cv[cv.length-1].id)+1, role, company, location, startDate, endDate, jobTask]);
 				}
 				
 				var cv = await CV.getCV(db);  // Get the list of CVs
 				console.log(cv);
 			}
-			reply.view('../fastify/templates/admin.ejs', { cv: cv } )
+			reply.view('../fastify/templates/add-cv.ejs', { success: true } )
 			
 		} else {
 			return reply.redirect('/login');
