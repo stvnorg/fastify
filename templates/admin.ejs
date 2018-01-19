@@ -19,19 +19,15 @@
 		<script src="https://use.fontawesome.com/8b057a7cd3.js"></script>
 		<link href="/static/signin.css" rel="stylesheet">
 		<script type="application/javascript" src="/scripts/ejs_production.js"></script>
-		<script type="text/javascript">
-				window.onload = function() {
-    			if(!window.location.hash) {
-        		window.location = window.location + '#loaded';
-        		window.location.reload();
-    			}
-				}
-		</script>
 		<style>
 			body {
 				background-color: #cad3e6;
 				background-image: url("/images/asfalt-light.png");
 				repeat;
+				!important;
+			}
+			.btn {
+				font-size: 0.8rem;
 				!important;
 			}
 			input[type='text'] {
@@ -52,6 +48,21 @@
 				border-radius: 3px;
 			}
 		</style>
+		<script type="text/javascript">
+				window.onload = function() {
+    			if(!window.location.hash) {
+        		window.location = window.location + '#loaded';
+        		window.location.reload();
+    			}
+				}
+				function confirmDelete(id, role, company) {
+  				var x = confirm(`Are you sure you want to delete? ${role} (${company})`);
+  				if (x) {
+						window.location.href = 'admin?delete=true&id=' + id.toString() ;
+					}
+					else return false;
+				}
+		</script>
   </head>
 
   <body>
@@ -60,7 +71,7 @@
   		<form>
 				<div class="form-group row">
       		<div class="col-md-1 col-sm-2">
-        		<br><a href="add-cv" class="btn btn-primary" role="button" style="font-size: 0.8rem !important">Add New</a>
+        		<br><a href="add-cv" class="btn btn-primary" role="button">Add New</a>
       		</div>
     		</div>
 				
@@ -73,7 +84,7 @@
 							</div>
 							<div class="col-md-2 col-sm-2 push-md-3 col-xs-3">
 								<a href="#"><i class="fa fa-pencil" title="edit" aria-hidden="true"></i></a>
-								<a href="#"><i class="fa fa-trash-o" title="delete" aria-hidden="true"></i></a>
+								<a href="#" onclick="confirmDelete(<%= c.id %>,'<%= c.role %>', '<%= c.company %>')"><i class="fa fa-trash-o" title="delete" aria-hidden="true"></i></a>
 							</div>
 						</div>
 					<% }) %>

@@ -1,6 +1,6 @@
 const CV = require('../functions/cv.js'); // import the getCV() function from home.js routes file
 
-// Index route
+// Add CV route
 async function routes (fastify, options) {
 	fastify.get('/add-cv', async function (request, reply) {
 		
@@ -28,10 +28,15 @@ async function routes (fastify, options) {
 				var cv = await CV.getCV(db);  // Get the list of CVs
 				console.log(cv);							//
 			
+				var workspan = null
+				
 				if (!cv.length) {
-					CV.addCV(db, [1, role, company, location, startDate, endDate, jobTask]);
-				} else {
-					CV.addCV(db, [parseInt(cv[cv.length-1].id)+1, role, company, location, startDate, endDate, jobTask]);
+					workspan = await CV.yearsWorking(startDate, endDate)
+					if (workspan) CV.addCV(db, [1, role, company, location, workspan, jobTask]);
+				} 
+				else {
+					workspan = await CV.yearsWorking(startDate, endDate)
+					if (workspan) CV.addCV(db, [parseInt(cv[0].id)+1, role, company, location, workspan, jobTask]);
 				}
 				
 				var cv = await CV.getCV(db);  // Get the list of CVs

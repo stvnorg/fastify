@@ -55,15 +55,15 @@ fastify.register(require('fastify-formbody'), {}, (err) => {
 	if (err) throw err
 })
 
+fastify.register(require('fastify-mongodb'), {
+	url: 'mongodb://localhost:27017/marchnine'
+})
+
 fastify.register(require('./routes/images.js'))
 
 fastify.register(require('./routes/static.js'))
 
 fastify.register(require('./routes/scripts.js'))
-
-fastify.register(require('fastify-mongodb'), {
-	url: 'mongodb://localhost:27017/marchnine'
-})
 
 fastify.register(require('./routes/home.js'))
 

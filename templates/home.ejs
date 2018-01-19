@@ -21,9 +21,53 @@
 				repeat;
 				!important;
 			}
+			.jumbotron {
+				background: #2f3d54; 
+				!important;
+			}
+			.row {
+				border: 0px solid black; 
+				!important;
+			}
+			#photo {
+				border: 0px solid black; 
+				text-align: center;
+			}
+			.rounded-circle {
+				border:3px solid white; 
+				margin-top: -30px; 
+				!important;
+			}
+			#header {
+				border:0px solid black; 
+				text-align: center; 
+				!important;
+			}
+			h4 {
+				color: white; 
+				font-family: 'Francois One', 'Enriqueta', 'Titillium Web', sans-serif; 
+				!important;
+			}
+			.fa {
+				color: #cde;
+			}
+			.nav {
+				font-size:0.8em;
+				!important;
+			}
 			.tab-content {
 				font-family: 'Titillium Web', 'Quattrocento', sans-serif;
 				font-size: 0.9rem; 
+				!important;
+			}
+			.container {
+				margin-top: -10px; 
+				!important;
+			}
+			#content {
+				background: #fff; 
+				padding: 20px 20px; 
+				border-radius: 3px; 
 				!important;
 			}
 			#jobtask {
@@ -38,29 +82,29 @@
 		</style>
   </head>
 <body>
-	<div style="background:#2f3d54; !important" class="jumbotron">
+	<div class="jumbotron">
 		<div class="container">
-			<div style="border:0px solid black !important" class="row">
-				<div style="border:0px solid black; text-align:center; !important" class="col-md-6 push-md-3 col-sm-8 push-sm-2 col-xs-12">
-					<img style="border:3px solid white; margin-top:-30px; !important" class="rounded-circle" src="/images/steven_stevanus_photo.jpg" width="100" height="150">
+			<div class="row">
+				<div class="col-md-6 push-md-3 col-sm-8 push-sm-2 col-xs-12" id="photo">
+					<img class="rounded-circle" src="/images/steven_stevanus_photo.jpg" width="100" height="100">
 				</div>
 			</div>
 			<br>
-			<div style="border:0px solid black; text-align:center; !important" class="col-md-6 push-md-3 col-sm-8 push-sm-2 col-xs-12">
-				<h4 style="color: white; font-family: 'Francois One', 'Enriqueta', 'Titillium Web', sans-serif; !important">Steven Stevanus</h4>
-				<a href="mailto:stvn.org@gmail.com" target="_blank"><i class="fa fa-envelope" style="color:#cde;" title="email" aria-hidden="true"></i></a>
-				&nbsp;<a href="https://www.linkedin.com/in/steven-stevanus-aa367737/" target="_blank"><i class="fa fa-linkedin" style="color:#cde;" title="linkedin" aria-hidden="true"></i></a>
-				&nbsp;<a href="https://angel.co/steven-stevanus" target="_blank"><i class="fa fa-angellist" style="color:#cde;" title="angel list" aria-hidden="true"></i></a>
-				&nbsp;<a href="https://www.instagram.com/s7evn/" target="_blank"><i class="fa fa-instagram" style="color:#cde;" title="instagram"
+			<div class="col-md-6 push-md-3 col-sm-8 push-sm-2 col-xs-12" id="header">
+				<h4>Steven Stevanus</h4>
+				<a href="mailto:stvn.org@gmail.com" target="_blank"><i class="fa fa-envelope" title="email" aria-hidden="true"></i></a>
+				&nbsp;<a href="https://www.linkedin.com/in/steven-stevanus-aa367737/" target="_blank"><i class="fa fa-linkedin" title="linkedin" aria-hidden="true"></i></a>
+				&nbsp;<a href="https://angel.co/steven-stevanus" target="_blank"><i class="fa fa-angellist" title="angel list" aria-hidden="true"></i></a>
+				&nbsp;<a href="https://www.instagram.com/s7evn/" target="_blank"><i class="fa fa-instagram" title="instagram"
 aria-hidden="true"></i></a>
-					&nbsp;<a href="skype:stvn.org?call"><i class="fa fa-skype" style="color:#cde;" title="skype" aria-hidden="true"></i></a>
-					&nbsp;<a href="https://github.com/stvnorg" target="_blank"><i class="fa fa-github" style="color:#cde;" title="github" aria-hidden="true"></i></a>
+					&nbsp;<a href="skype:stvn.org?call"><i class="fa fa-skype" title="skype" aria-hidden="true"></i></a>
+					&nbsp;<a href="https://github.com/stvnorg" target="_blank"><i class="fa fa-github" title="github" aria-hidden="true"></i></a>
 				</div>
 			<br>
 			<!-- Tabs -->
 			<div class="row">
 				<div class="col-md-4 push-md-4 col-sm-8 push-sm-2 col-xs-12">
-					<ul style="font-size:0.8em !important" class="nav nav-tabs nav-fill" role="tablist">
+					<ul class="nav nav-tabs nav-fill" role="tablist">
         		<li class="nav-item">
             	<a class="nav-link active" data-toggle="tab" href="#about" role="tab">About</a>
         		</li>
@@ -83,8 +127,8 @@ aria-hidden="true"></i></a>
 	</div>
 </div>
 
-	<div style="margin-top: -10px; !important" class="container">
-		<div style="background: #fff; padding: 20px 20px; border-radius: 3px; !important" class="col-md-8 push-md-2 col-xs-12">
+	<div class="container">
+		<div class="col-md-8 push-md-2 col-xs-12" id="content">
 			<div class="tab-content">
 				<div class="active tab-pane show fade" id="about" role="tabpanel">
 					<p>Jesus Freak, geek, avid swimmer, art lover (I draw sometimes), book nerd, soccer fan, travel junky (wish i had more time and money to visit other countries).</p>
@@ -97,7 +141,7 @@ aria-hidden="true"></i></a>
 						<% cv.forEach(function(c) { %>
 							<strong><u><%- c.role %></u></strong><br>
 							<%- c.company %>&nbsp;(<%- c.location %>)<br>
-							<span id="workperiode"><%- c.startdate %> - <%- c.enddate %></span>
+							<span id="workperiode"><%- c.workspan %></span>
 							<p id="jobtask"><%- c.jobtask %></p>
 						<% }) %>
 					<% } %>
