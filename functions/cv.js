@@ -80,13 +80,27 @@ function yearsWorking(start, end) {
 		var workspan = null;
 		
 		var START = start.match(/\d{4}\-\d{2}\-\d{2}/g)
-		var END = end.match(/\d{4}\-\d{2}\-\d{2}/g)
-
+		var END = end;
+		
+		if (end.toLowerCase() !== 'present') {
+			var END = end.match(/\d{4}\-\d{2}\-\d{2}/g)	
+		}
+		
 		try {
 			var n = START.length
 			var m = START[0]
 			var o = END.length
 			var p = END[0]
+			
+			if (END == 'present') {
+				var n = START.length
+				var m = START[0]
+				m = m.split('-')
+				var start_month = m[1]
+				var start_year = m[0]
+				resolve(MONTH[start_month] + " " + start_year + " - Present")
+			}
+			
 			if (n == 1 && m.length == start.length && o == 1 && p.length == end.length) {
 				
 				m = m.split('-')
