@@ -73,6 +73,8 @@ fastify.register(require('./routes/admin.js'))
 
 fastify.register(require('./routes/add-cv.js'))
 
+fastify.register(require('./routes/edit-cv.js'))
+
 fastify.register(require('./routes/view-logs.js'))
 
 // Run the server!

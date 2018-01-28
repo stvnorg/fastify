@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Add CV</title>
+    <title>Edit CV</title>
 
     <!-- Bootstrap CSS -->
     <!--<link rel="stylesheet" href="../bootstrap/bootstrap-4.0.0-beta-dist/css/bootstrap.min.css">-->
@@ -60,7 +60,7 @@
 
   <body>
 		<div class="container push-sm-2">
-  		<form action="add-cv" method="POST">
+  		<form action="edit-cv" method="POST">
 				<div class="form-group row">
 					<div class="col-md-4 col-sm-6">
 						<h4>Work History</h4>
@@ -68,23 +68,23 @@
 				</div>
 				<div class="form-group row">
       		<div class="col-md-4 col-sm-6">
-        		<input type="text" class="form-control form-control-sm" id="role" name="role" placeholder="Position/Role" required>
+        		<input type="text" class="form-control form-control-sm" id="role" name="role" placeholder="Position/Role" value="<%= cv.role %>" required>
       		</div>
     		</div>
     		<div class="form-group row">
       		<div class="col-md-4 col-sm-6">
-        		<input type="text" class="form-control form-control-sm" id="company" name="company" placeholder="Company Name" required>
+        		<input type="text" class="form-control form-control-sm" id="company" name="company" placeholder="Company Name" value="<%= cv.company %>" required>
       		</div>
     		</div>
 				<div class="form-group row">
       		<div class="col-md-4 col-sm-6">
-        		<input type="text" class="form-control form-control-sm" id="location" name="location" placeholder="Location/City" required>
+        		<input type="text" class="form-control form-control-sm" id="location" name="location" placeholder="Location/City" value="<%= cv.location %>" required>
       		</div>
     		</div>
 				<div class="form-group row">
       		<div class="col-md-2 col-sm-3">
 						<label for="startDate">Start Date:</label>
-        		<input type="date" class="form-control form-control-sm" id="startDate" name="startDate" required>
+        		<input type="date" class="form-control form-control-sm" id="startDate" name="startDate" value="<%= cv.workspan %>" required>
       		</div>
 					<div class="col-md-2 col-sm-3">
 						<label for="endDate">End Date:</label>

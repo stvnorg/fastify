@@ -83,7 +83,7 @@
 								<strong><%= c.role %></strong>, (<%= c.company %>)
 							</div>
 							<div class="col-md-2 col-sm-2 push-md-3 col-xs-3">
-								<a href="#"><i class="fa fa-pencil" title="edit" aria-hidden="true"></i></a>
+								<a href="edit-cv?id=<%= c.id %>"><i class="fa fa-pencil" title="edit" aria-hidden="true"></i></a>
 								<a href="#" onclick="confirmDelete(<%= c.id %>,'<%= c.role %>', '<%= c.company %>')"><i class="fa fa-trash-o" title="delete" aria-hidden="true"></i></a>
 							</div>
 						</div>

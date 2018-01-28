@@ -17,13 +17,31 @@ function getCV(db) {
 }
 
 
+/* ----------------------------------------------- */
+/* Function to get list of CV with certain ID's    */
+/* ----------------------------------------------- */
+function getOneCV(db, id) {
+	return new Promise(function(resolve, reject) {
+		db.collection('cv', onCollection);
+		var cv = null;
+			
+		function onCollection(err, col) {
+			if (err) return reply.send(err);
+			col.findOne({ id: id }, (err, data) => {
+				cv = data;
+				resolve(cv);
+			})
+		}
+	})
+}
+
+
 /* -------------------------------------------- */
 /* Function to add new record on CV collections */
 /* -------------------------------------------- */
 function addCV(db, data) {
 	return new Promise(function(resolve, reject) {
 		db.collection('cv', onCollection);
-		var cv = null;
 			
 		function onCollection(err, col) {
 			if (err) return reply.send(err);
@@ -38,6 +56,31 @@ function addCV(db, data) {
 	})
 }
 
+
+/* --------------------------------------------- */
+/* Function to update a record on CV collections */
+/* --------------------------------------------- */
+function editCV(db, data) {
+	return new Promise(function(resolve, reject) {
+			db.collection('cv', onCollection);
+			
+			function onCollection(err, col) {
+				if (err) return reply.send(err);
+				col.updateOne({ id: data[0]},
+											{ $set: { id: data[0],
+															  role: data[1],
+															  company: data[2],
+															  location: data[3],
+															  workspan: data[4],
+															  jobtask: data[5] }}, function(err, result) {
+					assert.equal(err, null);
+					assert.equal(1, result.result.n);
+					console.log("Update the document with the 'id' equal to " + data[0].toString());
+					callback(result);
+				});
+			}
+	})
+}
 
 /* ------------------------------------------- */
 /* Function to delete record on cv collections */
@@ -146,7 +189,36 @@ function yearsWorking(start, end) {
 	})
 }
 
+
+/* ------------------------------------- */
+/* Month, Year to date format mm/dd/yyyy */
+/* ------------------------------------- */
+function toDateFormat(monthYear) {
+	
+	const MONTH = {
+		'January': '01',
+		'February': '02',
+		'March': '03',
+		'April': '04',
+		'May': '05',
+		'June': '06',
+		'July': '07',
+		'August': '08',
+		'September': '09',
+		'October': '10',
+		'November': '11',
+		'December': '12'
+	}
+	
+	var month = monthYear.split(" ")
+	return month[1] + "-" + MONTH[month[0]] + "-01"
+}
+
+
 module.exports.getCV = getCV
+module.exports.getOneCV = getOneCV
 module.exports.addCV = addCV
+module.exports.editCV = editCV
 module.exports.delCV = delCV
 module.exports.yearsWorking = yearsWorking
+module.exports.toDateFormat = toDateFormat

@@ -7,7 +7,7 @@ async function routes (fastify, options) {
 		if (request.session && request.session.email) {
 			const { db } = fastify.mongo; //
 			var cv = await CV.getCV(db);  // Get the list of CVs
-			console.log(cv);							//
+			console.log(cv, 'ADMIN GET');							//
 			
 			if (request.query.delete && !request.query.edit) {
 				id = parseInt(request.query.id)

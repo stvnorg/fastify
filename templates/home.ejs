@@ -60,9 +60,12 @@
 				font-size: 0.9rem; 
 				!important;
 			}
-			.container {
-				margin-top: -10px; 
-				!important;
+			@media (min-width: 640px) {
+				.container {
+					margin-top: -10px;
+					margin-bottom: -4rem;
+					!important;
+				}
 			}
 			#content {
 				background: #fff; 
@@ -76,7 +79,7 @@
 				!important;
 			}
 			#workperiode {
-				font-size: 0.8rem;
+				font-size: 0.85rem;
 				!important;
 			}
 		</style>
@@ -103,7 +106,7 @@ aria-hidden="true"></i></a>
 			<br>
 			<!-- Tabs -->
 			<div class="row">
-				<div class="col-md-4 push-md-4 col-sm-8 push-sm-2 col-xs-12">
+				<div class="col-md-4 push-md-4 col-sm-8 push-sm-2">
 					<ul class="nav nav-tabs nav-fill" role="tablist">
         		<li class="nav-item">
             	<a class="nav-link active" data-toggle="tab" href="#about" role="tab">About</a>
@@ -132,6 +135,7 @@ aria-hidden="true"></i></a>
 			<div class="tab-content">
 				<div class="active tab-pane show fade" id="about" role="tabpanel">
 					<p>Jesus Freak, geek, avid swimmer, art lover (I draw sometimes), book nerd, soccer fan, travel junky (wish i had more time and money to visit other countries).</p>
+					<p>I'm an Associate Diploma Graduated from Gadjah Mada University, Indonesia on 2004. My major study is Electronics and Instrumentation Science.</p>
 					<p>I'm a self taught Programmer, DevOps Engineer and Network Administrator. My first linux OS is Mandrake, back then in the year 2002 when I was still in College. Since then I was very astonished of what Information Technology can brings to humanity and the world. Always want to learn and explore new things, new skills and new journey.</p>
 					<p>My goal is to have my own startup. And giving back some of the profits to educate, develop and train new leaders and create a better living for the poor and the forgotten people.</p>
 				</div>
