@@ -77,8 +77,22 @@ fastify.register(require('./routes/edit-cv.js'))
 
 fastify.register(require('./routes/view-logs.js'))
 
+fastify.register(require('./routes/coolpage.js'))
+
 // Run the server!
+/*
 fastify.listen(3000, function (err) {
 	if (err) throw err
 	fastify.log.info(`server listening on ${fastify.server.address().port}`)
 })
+*/
+
+const start = async () => {
+  try {
+    await fastify.listen(3000)
+  } catch (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
+}
+start()
