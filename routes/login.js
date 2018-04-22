@@ -20,7 +20,7 @@ async function routes (fastify, options) {
 		
 		var hashedPassword = bcrypt.hashSync(request.body.password, 8);
 
-		if (request.body.email == 'steven@marchnine.com' && request.body.password == "g4nt3ngS") {
+		if (request.body.email == 'steven@marchnine.com' && request.body.password == "123456") {
 			request.session.email = request.body.email.toString();
 			console.log(request.session);
 			reply.view('../fastify/templates/login.ejs', { email: request.session.email } )
