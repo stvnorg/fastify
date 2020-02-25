@@ -10,7 +10,7 @@ async function routes (fastify, options) {
 		
 		var cv = await CV.getCV(db);
 		console.log(cv);
-		reply.view('../fastify/templates/home.ejs', { cv: cv });
+		return reply.view('../fastify/templates/home.ejs', { cv: cv });
 	})
 }
 

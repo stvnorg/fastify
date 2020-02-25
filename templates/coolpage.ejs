@@ -15,8 +15,17 @@
 		<script src="/static/bootstrap-4.0.0-alpha.6-dist/js/bootstrap.js"></script>
 		<script src="https://use.fontawesome.com/8b057a7cd3.js"></script>
 		<style>
+			.container-fluid {
+			#	background-image: url("images/steven_stevanus_portrait_photo.jpg");
+				background-color: #eef;
+			}
+			.navbar {
+				padding-top: 2%;
+				!important;
+			}
 			.navbar-brand {
 				font-family: 'Francois One';
+				padding-left: 5%;
 				!important;
 			}
 			.nav-link, .btn-secondary {
@@ -25,20 +34,15 @@
 				!important;
 			}
 			
-			@media (max-width: 480px) {
+			@media (max-width: 640px) {
 				.navbar-header {
        		float: none;
 				}
 				.navbar-toggle {
         	display: block;
 				}
-				.navbar-nav {
-        	margin: 7.5px -15px;
-					border-radius: 
-				}
 				.navbar-nav>li>a {
-        	padding-top: 10px;
-        	padding-bottom: 10px;
+        	padding: 10px 10px;
 					border-top: 1px solid #aaa;
 					border-radius: 0!important;
 				}
@@ -47,47 +51,82 @@
         	padding-bottom: 10px;
 					width: 100%;
 				}
+				.heading>col>my-photo {
+					margin-left: 0;
+					!important;
+				}
+				.heading>col>my-photo>rounded {
+					width: 50px;
+					height: 70px;
+					!important;
+				}
 			}
 			
+			.heading {
+				margin-top: 2rem;
+				padding-bottom: 1rem;
+				!important;
+			}
+			.my-photo {
+				width: 90%;
+				margin-left: 40%;
+				!important;
+			}
+			.rounded {
+				border: 0.3rem solid #eee;
+				width: 200px;
+				height: 300px;
+				!important;
+			}
+			.col { 
+				border: 0px solid black!important;
+			}
 		</style>
   </head>
 <body>
-	<div class="container">
-	<nav class="navbar navbar-toggleable-md navbar-light">
+	<div class="container-fluid">
+		<nav class="navbar navbar-toggleable-md navbar-light">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    	<span class="navbar-toggler-icon"></span>
+  		</button>
+  		<a class="navbar-brand" href="#">Navbar</a>
+  		<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    		<ul class="navbar-nav nav-pills nav-justified">
+      		<li class="nav-item active">
+       			<a class="nav-link" href="#about">AboutMe<span class="sr-only">(current)</span></a>
+      		</li>
+     			<li class="nav-item active">
+        		<a class="nav-link" href="#service">Vitae</a>
+      		</li>
+      		<li class="nav-item active">
+        		<a class="nav-link" href="#products">TechStack</a>
+      		</li>
+					<li class="nav-item active">
+        		<a class="nav-link" href="#blog">Blog</a>
+      		</li>
+					<li class="nav-item active">
+        		<a class="nav-link" href="#contact">Contact</a>
+      		</li>
+					<li class="nav-item active">
+      			<button class="btn btn-secondary my-2 my-sm-0 nav-link" type="submit">Login</button>
+    			</li>
+    		</ul>
+  		</div>
+		</nav>
 		
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">Navbar</a>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-    <ul class="navbar-nav nav-pills nav-justified">
-      <li class="nav-item active">
-        <a class="nav-link" href="#about">About<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#service">Service</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#products">Products</a>
-      </li>
-			<li class="nav-item active">
-        <a class="nav-link" href="#blog">Blog</a>
-      </li>
-			<li class="nav-item active">
-        <a class="nav-link" href="#news">News</a>
-      </li>
-			<li class="nav-item active">
-        <a class="nav-link" href="#contact">Contact</a>
-      </li>
-			<li class="nav-item active">
-      	<button class="btn btn-secondary my-2 my-sm-0 nav-link" type="submit">Login</button>
-    	</li>
-    </ul>
-  </div>
-	
-	</nav>
+		<div class="row heading">
+			<div class="col">
+      	<div class="my-photo">
+					<img class="rounded" src="/images/steven_stevanus_portrait_photo.jpg"/>
+				</div>
+    	</div>
+    	<div class="col my-links">
+      	Other page
+    	</div>
+		</div>
+		
 	</div>
-		
+	
 	
 		<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
