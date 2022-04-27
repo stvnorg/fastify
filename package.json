@@ -6,7 +6,7 @@
   "dependencies": {
     "abstract-cache": "^1.0.1",
     "abstract-cache-redis": "^1.1.0",
-    "async": "^2.6.3",
+    "async": "^2.6.4",
     "bcryptjs": "^2.4.3",
     "connect-redis": "^3.4.2",
     "ejs": "^2.7.4",
