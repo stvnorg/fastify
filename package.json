@@ -21,7 +21,7 @@
     "fastify-server-session": "^1.0.6",
     "fastify-session": "^0.2.3",
     "ioredis": "^3.2.2",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongodb": "^3.5.3",
     "point-of-view": "^0.3.0",
     "redis": "^2.8.0",
